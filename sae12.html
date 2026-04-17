@@ -2,36 +2,77 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SAÉ 1.2 - Portfolio Thomas Le Flêche</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
 </head>
 <body>
+
   <nav class="nav">
     <div class="nav__logo">Portfolio R&T</div>
-    <ul class="nav__links"><li><a href="index.html">Accueil</a></li></ul>
+    <ul class="nav__links">
+      <li><a href="index.html">Retour à l'accueil</a></li>
+    </ul>
   </nav>
 
-  <section class="section" style="padding-top: 120px;">
+  <section class="section" style="padding-top: 120px; padding-bottom: 40px;">
     <div class="container">
-      <div class="section__label">Projet 1.2 — S1</div>
+      <div class="section__label">Projet 1.2 — Semestre 1</div>
       <h1 class="section__title">S'initier aux réseaux informatiques</h1>
-      <div class="pres__grid" style="margin-top:40px;">
-        <div class="pres__card pres__card--main">
-          <h3>Description du projet</h3>
-          <p>Configuration de base d'un réseau local et installation de postes clients.</p>
-          <h3>Autoévaluation</h3>
-          <p>Bonne maîtrise des commandes de base. Progression sur la compréhension du modèle OSI.</p>
-          
-          <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
-            <a href="index.html#saes" class="btn btn--primary">← Retour à l'accueil</a>
-          </div>
-        </div>
-        <div class="pres__card">
-          <h3>Compétences</h3>
-          <p class="ac-tag">AC11.01</p><p class="ac-tag">AC11.02</p><p class="ac-tag">AC11.03</p><p class="ac-tag">AC11.06</p>
-        </div>
-      </div>
+      <p class="section__intro">
+        Conception et mise en œuvre d'une infrastructure réseau stable et sécurisée, incluant le déploiement de postes clients et l'administration des flux.
+      </p>
     </div>
   </section>
-</body>
-</html>
+
+  <section class="section section--dark" style="padding-top: 60px;">
+    <div class="container">
+      
+      <div class="pres__grid">
+        <div class="pres__card pres__card--main">
+          <h3>Missions et Réalisations</h3>
+          <p>
+            Cette SAÉ consistait à construire un réseau local (LAN) multi-réseaux et multi-VLAN. J'ai dû appréhender la diversité des constituants d'un réseau et assurer leur fonctionnement stable.
+          </p>
+          
+          <h4 style="margin-top: 20px; color: var(--accent);">Architecture et Interconnexion</h4>
+          <ul class="skill-list">
+            <li><span class="skill-dot"></span><strong>Plan d'adressage :</strong> Mise en œuvre d'un plan IPv4 structuré pour l'ensemble de l'infrastructure.</li>
+            <li><span class="skill-dot"></span><strong>Commutation avancée :</strong> Configuration de commutateurs L2 (Cisco 2960) et L2/L3 (Cisco 3560) avec les protocoles <strong>RSTP</strong> et <strong>EtherChannel</strong> (agrégation de liens).</li>
+            <li><span class="skill-dot"></span><strong>Routage :</strong> Configuration du routage inter-VLAN et mise en place de <strong>routage statique</strong> sur un routeur LAN/WAN Cisco 2911.</li>
+          </ul>
+
+          <h4 style="margin-top: 20px; color: var(--accent);">Sécurisation et Système</h4>
+          <ul class="skill-list">
+            <li><span class="skill-dot"></span><strong>Sécurité des ports :</strong> Limitation du "MAC Flooding" et prévention des tempêtes de broadcast.</li>
+            <li><span class="skill-dot"></span><strong>Déploiement client :</strong> Installation et configuration d'une machine virtuelle <strong>Debian</strong> avec gestion de plusieurs disques et cartes réseau.</li>
+          </ul>
+
+          <h3 style="margin-top: 40px;">Autoévaluation</h3>
+          <p>
+            Ce projet a été ma première confrontation réelle avec du matériel d'entreprise. J'ai appris que la compréhension des interactions entre les équipements est nécessaire avant toute intervention technique.
+          </p>
+          <p>
+            <strong>Point fort :</strong> Maîtrise de la configuration en ligne de commande (CLI) Cisco.
+            <br><strong>Axe de progrès :</strong> Optimisation de la surveillance des flux pour anticiper les pannes.
+          </p>
+
+          <div style="margin-top: 50px; border-top: 1px solid var(--border); padding-top: 30px; text-align: center;">
+            <a href="index.html#saes" class="btn btn--primary">← Retour à la liste des projets</a>
+          </div>
+        </div>
+
+        <div class="pres__card">
+          <h3>Apprentissages Critiques (AC)</h3>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="ac-tag"><strong>AC11.03</strong> - Configurer les fonctions de base</div>
+            <div class="ac-tag"><strong>AC11.04</strong> - Maîtriser les systèmes d'exploitation</div>
+            <div class="ac-tag"><strong>AC11.06</strong> - Installer un poste client</div>
+          </div>
+        </div>
+
+        <div class="pres__card">
+          <h3>Équipements mobilisés</h3>
+          <ul class="skill-list">
+            <li><span class="skill
