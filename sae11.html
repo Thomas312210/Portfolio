@@ -2,42 +2,135 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Projet 1.1 - Hygiène Informatique</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAÉ 1.1 - Hygiène Informatique | Portfolio Thomas</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    .screenshot-box {
+      margin: 20px 0;
+      background: #fdfdfd;
+      border: 1px dashed var(--border-accent);
+      border-radius: var(--radius-sm);
+      padding: 15px;
+      text-align: center;
+    }
+    .badge-display {
+      width: 120px;
+      height: 120px;
+      margin: 10px auto;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+    }
+    .solution-box {
+      background: rgba(90, 122, 94, 0.05);
+      border-left: 4px solid var(--cyber);
+      padding: 15px;
+      margin: 15px 0;
+    }
+  </style>
 </head>
 <body>
+
   <nav class="nav">
     <div class="nav__logo">Portfolio R&T</div>
-    <ul class="nav__links"><li><a href="index.html">Retour à l'accueil</a></li></ul>
+    <ul class="nav__links">
+      <li><a href="index.html">Retour à l'accueil</a></li>
+    </ul>
   </nav>
 
-  <section class="section" style="padding-top: 120px;">
+  <section class="section" style="padding-top: 120px; padding-bottom: 40px;">
     <div class="container">
-      <div class="section__label">Projet 1.1 — S1</div>
-      <h1 class="section__title">Sensibilisation à l'hygiène informatique</h1>
-      <div class="pres__grid" style="margin-top:40px;">
-        <div class="pres__card pres__card--main">
-          <h3>Missions réalisées</h3>
-          <p>Ce projet s'est articulé autour de trois axes majeurs de la cybersécurité :</p>
-          <ul class="skill-list">
-            <li><span class="skill-dot"></span><strong>MOOC SecNumacadémie :</strong> Validation des modules de l'ANSSI pour acquérir les bases de la sécurité numérique.</li>
-            <li><span class="skill-dot"></span><strong>Recherche thématique :</strong> Travail en groupe sur la sécurisation des accès (mots de passe, 2FA, biométrie) et l'étude des recommandations de l'ANSSI.</li>
-            <li><span class="skill-dot"></span><strong>Découverte réseau :</strong> Utilisation d'outils sous Debian pour le fingerprinting (identification des OS et des versions de services distants).</li>
-          </ul>
-          <h3>Autoévaluation</h3>
-          <p>J'ai appris à identifier concrètement les vulnérabilités d'un système. La difficulté a été de vulgariser les concepts techniques pour le rapport de sensibilisation.</p>
-          
-          <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
-            <a href="index.html#saes" class="btn btn--primary">← Retour à l'accueil</a>
-          </div>
-        </div>
-        <div class="pres__card">
-          <h3>Compétences (AC)</h3>
-          <p class="ac-tag">AC11.02</p><p class="ac-tag">AC11.04</p><p class="ac-tag">AC11.05</p>
-        </div>
-      </div>
+      <div class="section__label">Projet 1.1 — Semestre 1</div>
+      <h1 class="section__title">Hygiène informatique et Cybersécurité</h1>
+      <p class="section__intro">
+        Apprendre à identifier les menaces numériques et sensibiliser les collaborateurs aux bonnes pratiques de sécurité.
+      </p>
     </div>
   </section>
+
+  <section class="section section--dark" style="padding-top: 60px;">
+    <div class="container">
+      
+      <div class="pres__grid">
+        <div class="pres__card pres__card--main">
+          <h3>Missions et Apprentissages</h3>
+          <p>
+            En tant que futur professionnel R&T, j'ai été formé à devenir un interlocuteur de confiance pour la sécurité des systèmes d'information (DSI). Ce projet s'est articulé autour de trois piliers :
+          </p>
+          
+          <ul class="skill-list">
+            <li><span class="skill-dot"></span><strong>Auto-formation ANSSI :</strong> Suivi complet du MOOC SecNumacadémie (Panorama de la SSI, Authentification, Sécurité sur Internet et Mobilité).</li>
+            <li><span class="skill-dot"></span><strong>Recherche technique en groupe :</strong> Étude approfondie de thématiques "Cyber" (Lots techniques sur les mots de passe ou les accès SSH).</li>
+            <li><span class="skill-dot"></span><strong>Mise en situation (CTF) :</strong> Participation à un "Capture The Flag" pour découvrir les vulnérabilités de machines distantes par fingerprinting.</li>
+          </ul>
+
+          <h3 style="margin-top: 30px;">Difficultés rencontrées & Solutions</h3>
+          
+          <div class="problem-section">
+            <h4>1. Vulgarisation de concepts complexes</h4>
+            <p>
+              La difficulté majeure était de présenter des attaques techniques (comme le Brute Force ou le MAC Flooding) à des utilisateurs non-spécialistes de façon claire et concise, sans les noyer sous le jargon technique.
+            </p>
+            <div class="solution-box">
+              <strong>Ma solution :</strong> J'ai utilisé la méthode de la vidéo "en 180 secondes" pour synthétiser les risques. En utilisant des analogies concrètes (comparer un mot de passe à une clé de maison), j'ai réussi à rendre les menaces compréhensibles pour tous.
+            </div>
+          </div>
+
+          <div class="problem-section" style="margin-top: 30px;">
+            <h4>2. Configuration sécurisée des accès SSH</h4>
+            <p>
+              Lors des TP, passer d'une identification classique par mot de passe à une authentification par clés publique/privée a été complexe au niveau des permissions de fichiers sous Linux.
+            </p>
+            <div class="solution-box">
+              <strong>Ma solution :</strong> J'ai étudié les algorithmes préconisés par l'ANSSI (Ed25519) et appris à configurer correctement les fichiers <code>authorized_keys</code>, garantissant une connexion infalsifiable et sécurisée.
+            </div>
+          </div>
+
+          <div style="margin-top: 50px; text-align: center;">
+            <a href="index.html#saes" class="btn btn--primary">← Retour à la liste des projets</a>
+          </div>
+        </div>
+
+        <div class="pres__card">
+          <h3>Certification obtenue</h3>
+          <div class="screenshot-box">
+            <img src="https://openbadgefactory.com/static/images/ob_logo.png" alt="Open Badge" class="badge-display" style="object-fit: contain;">
+            <p><strong>Open Badge :</strong> Hygiène Informatique</p>
+            <p style="font-size: 0.75rem; color: var(--text-dim);">Obtenu avec un score > 75% au QCM final.</p>
+          </div>
+        </div>
+
+        <div class="pres__card">
+          <h3>Compétences (AC)</h3>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="ac-tag"><strong>AC11.02</strong> - Comprendre l'architecture</div>
+            <div class="ac-tag"><strong>AC11.04</strong> - Principes fondamentaux SSI</div>
+            <div class="ac-tag"><strong>AC11.05</strong> - Identifier les menaces</div>
+          </div>
+        </div>
+
+        <div class="pres__card">
+          <h3>Traces</h3>
+          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px;">Livrables du projet :</p>
+          <a href="#" class="trace-placeholder">📄 Attestation MOOC ANSSI</a>
+          <a href="#" class="trace-placeholder">📹 Vidéo de sensibilisation</a>
+          <a href="#" class="trace-placeholder">📊 Diaporama de présentation</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <p>BUT Réseaux & Télécommunications</p>
+      </div>
+      <div class="footer__right">
+        <p>© 2025 — Thomas Le Flêche</p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

@@ -22,6 +22,7 @@
       height: auto;
       border-radius: 4px;
       margin-bottom: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
     .screenshot-caption {
       font-size: 0.8rem;
@@ -62,7 +63,7 @@
         <div class="pres__card pres__card--main">
           <h3>Le projet en bref</h3>
           <p>
-            Cette SAÉ consistait à manipuler des supports physiques (coaxial RG58, Ethernet, Fibre FTTH) pour en déterminer les caractéristiques réelles à l'aide d'instruments de mesure professionnels (Oscilloscope, GBF, Photomètre).
+            Cette SAÉ consistait à manipuler des supports physiques (coaxial RG58, Ethernet, Fibre FTTH) pour en déterminer les caractéristiques réelles à l'aide d'instruments de mesure professionnels comme l'oscilloscope, le GBF et le photomètre.
           </p>
 
           <h3 style="margin-top: 30px;">Difficultés rencontrées & Solutions</h3>
@@ -74,28 +75,28 @@
             </p>
             
             <div class="screenshot-box">
-              <img src="IMG_9845.jpg" alt="Mesure à l'oscilloscope">
+              <img src="IMG_9845.jpeg" alt="Mesure à l'oscilloscope">
               <div class="screenshot-caption">Capture : Mesure du décalage temporel entre l'impulsion et son écho sur l'oscilloscope.</div>
             </div>
 
             <div class="solution-box">
-              <strong>Ma solution :</strong> J'ai d'abord calibré la mesure sur un câble étalon pour confirmer la NVP à 66%. Sur mon câble de test ("Câble 2"), j'ai relevé un $\Delta t = 450 \text{ ns}$. Par le calcul, j'ai déduit une longueur de **44,55 m**, une valeur validée avec une grande précision par l'analyseur DTF qui indiquait **44,9 m**.
+              <strong>Ma solution :</strong> J'ai d'abord calibré la mesure sur un câble étalon pour confirmer la NVP à 66%. Sur mon câble de test, j'ai relevé un $\Delta t = 450$ ns. Par le calcul, j'ai déduit une longueur de **44,55 m**, une valeur validée avec une grande précision par l'analyseur DTF qui indiquait **44,9 m**.
             </div>
           </div>
 
           <div class="problem-section" style="margin-top: 30px;">
-            <h4>2. Calibration et Pertes Optiques (Fibre)</h4>
+            <h4>2. Expertise théorique et zones mortes (Fibre)</h4>
             <p>
-              La mesure de l'atténuation d'une liaison fibrée nécessite une calibration parfaite. L'enjeu est d'établir une puissance de référence stable avant d'insérer les bobines de test, sous peine de fausser tout le budget optique.
+              L'un des défis majeurs a été de comprendre les limites physiques de la mesure par réflectométrie optique (OTDR), notamment la gestion des "zones mortes" qui empêchent de voir certains événements trop proches.
             </p>
 
             <div class="screenshot-box">
               <img src="capture_fo.png" alt="Synthèse Fibre Optique">
-              <div class="screenshot-caption">Extrait : Analyse théorique des zones mortes et du paramétrage OTDR.</div>
+              <div class="screenshot-caption">Extrait : Analyse théorique des zones mortes (EDZ/ADZ) et du paramétrage OTDR.</div>
             </div>
 
             <div class="solution-box">
-              <strong>Ma solution :</strong> J'ai appliqué une rigueur de nettoyage des connecteurs et réalisé un étalonnage précis avec une puissance de référence $P_{ref} = -5,04 \text{ dBm}$. Cela m'a permis de mesurer sans erreur les pertes d'insertion sur mes bobines de 3 km et 5 km.
+              <strong>Ma solution :</strong> J'ai rédigé une fiche de synthèse détaillée pour maîtriser les paramètres d'acquisition (largeur d'impulsion). Pour les mesures de photométrie, j'ai effectué une calibration rigoureuse avec une puissance de référence stable afin de valider le budget optique de la liaison sans erreur d'interprétation.
             </div>
           </div>
 
@@ -131,8 +132,8 @@
         <div class="pres__card">
           <h3>Traces & Preuves</h3>
           <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px;">Livrables et relevés de laboratoire :</p>
-          <a href="IMG_9846.jpg" class="trace-placeholder" style="text-decoration: none;" target="_blank">📸 Mes calculs manuscrits (Cuivre)</a>
-          <a href="IMG_9848.jpg" class="trace-placeholder" style="text-decoration: none;" target="_blank">📸 Mes relevés de pertes (Fibre)</a>
+          <a href="IMG_9846.jpeg" class="trace-placeholder" style="text-decoration: none;" target="_blank">📸 Mes calculs manuscrits (Cuivre)</a>
+          <a href="capture_fo.png" class="trace-placeholder" style="text-decoration: none;" target="_blank">📸 Extrait de synthèse (Fibre Optique)</a>
           <a href="CU.md" class="trace-placeholder" style="text-decoration: none;" download>📄 Fiche de révision Cuivre</a>
           <a href="FO.md" class="trace-placeholder" style="text-decoration: none;" download>📄 Fiche de révision Fibre</a>
         </div>
@@ -155,3 +156,8 @@
 
 </body>
 </html>
+
+<script type="text/javascript"
+src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ tex2jax:
+{inlineMath: [['$', '$']]}, messageStyle: "none" });</script>
