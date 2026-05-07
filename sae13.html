@@ -2,41 +2,156 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Projet 1.3 - Transmissions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAÉ 1.3 - Transmissions | Portfolio Thomas</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* Styles spécifiques pour l'affichage des preuves techniques */
+    .screenshot-box {
+      margin: 20px 0;
+      background: #fdfdfd;
+      border: 1px dashed var(--border-accent);
+      border-radius: var(--radius-sm);
+      padding: 10px;
+      text-align: center;
+    }
+    .screenshot-box img {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+    .screenshot-caption {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-style: italic;
+    }
+    .solution-box {
+      background: rgba(90, 122, 94, 0.05);
+      border-left: 4px solid var(--cyber);
+      padding: 15px;
+      margin: 15px 0;
+    }
+  </style>
 </head>
 <body>
+
   <nav class="nav">
     <div class="nav__logo">Portfolio R&T</div>
-    <ul class="nav__links"><li><a href="index.html">Accueil</a></li></ul>
+    <ul class="nav__links">
+      <li><a href="index.html">Retour à l'accueil</a></li>
+    </ul>
   </nav>
 
-  <section class="section" style="padding-top: 120px;">
+  <section class="section" style="padding-top: 120px; padding-bottom: 40px;">
     <div class="container">
-      <div class="section__label">Projet 1.3 — S1</div>
+      <div class="section__label">Projet 1.3 — Semestre 1</div>
       <h1 class="section__title">Découverte des dispositifs de transmission</h1>
-      <div class="pres__grid" style="margin-top:40px;">
-        <div class="pres__card pres__card--main">
-          <h3>Mesures et analyses</h3>
-          <p>Étude des supports physiques cuivre et fibre optique :</p>
-          <ul class="skill-list">
-            <li><span class="skill-dot"></span><strong>Support Cuivre :</strong> Mesure de la NVP à l'oscilloscope et localisation de défauts par la méthode DTF (Distance to Fault).</li>
-            <li><span class="skill-dot"></span><strong>Fibre Optique :</strong> Câblage d'une liaison et mesure d'atténuation globale par photométrie.</li>
-            <li><span class="skill-dot"></span><strong>Analyse :</strong> Rédaction de rapports de mesures techniques normalisés.</li>
-          </ul>
-          <h3>Analyse réflexive</h3>
-          <p>La précision est la clé de ce projet. J'ai appris l'importance de la calibration des instruments (GBF, oscilloscope) pour obtenir des données fiables.</p>
-          
-          <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
-            <a href="index.html#saes" class="btn btn--primary">← Retour à l'accueil</a>
-          </div>
-        </div>
-        <div class="pres__card">
-          <h3>Compétences (AC)</h3>
-          <p class="ac-tag">AC12.01</p><p class="ac-tag">AC12.03</p><p class="ac-tag">AC12.05</p>
-        </div>
-      </div>
+      <p class="section__intro">
+        Étude expérimentale des supports de transmission : caractérisation des câbles en cuivre et mesure d'atténuation sur fibre optique.
+      </p>
     </div>
   </section>
+
+  <section class="section section--dark" style="padding-top: 60px;">
+    <div class="container">
+      
+      <div class="pres__grid">
+        <div class="pres__card pres__card--main">
+          <h3>Le projet en bref</h3>
+          <p>
+            Cette SAÉ consistait à manipuler des supports physiques (coaxial RG58, Ethernet, Fibre FTTH) pour en déterminer les caractéristiques réelles à l'aide d'instruments de mesure professionnels (Oscilloscope, GBF, Photomètre).
+          </p>
+
+          <h3 style="margin-top: 30px;">Difficultés rencontrées & Solutions</h3>
+          
+          <div class="problem-section">
+            <h4>1. Calcul de longueur par réflectométrie (Cuivre)</h4>
+            <p>
+              Pour mesurer un câble de longueur inconnue, nous devions observer l'écho d'une impulsion à l'oscilloscope. La difficulté réside dans la lecture précise du décalage temporel ($\Delta t$) entre le signal émis et le signal réfléchi, car chaque nanoseconde compte dans le calcul final.
+            </p>
+            
+            <div class="screenshot-box">
+              <img src="IMG_9845.jpg" alt="Mesure à l'oscilloscope">
+              <div class="screenshot-caption">Capture : Mesure du décalage temporel entre l'impulsion et son écho sur l'oscilloscope.</div>
+            </div>
+
+            <div class="solution-box">
+              <strong>Ma solution :</strong> J'ai d'abord calibré la mesure sur un câble étalon pour confirmer la NVP à 66%. Sur mon câble de test ("Câble 2"), j'ai relevé un $\Delta t = 450 \text{ ns}$. Par le calcul, j'ai déduit une longueur de **44,55 m**, une valeur validée avec une grande précision par l'analyseur DTF qui indiquait **44,9 m**.
+            </div>
+          </div>
+
+          <div class="problem-section" style="margin-top: 30px;">
+            <h4>2. Calibration et Pertes Optiques (Fibre)</h4>
+            <p>
+              La mesure de l'atténuation d'une liaison fibrée nécessite une calibration parfaite. L'enjeu est d'établir une puissance de référence stable avant d'insérer les bobines de test, sous peine de fausser tout le budget optique.
+            </p>
+
+            <div class="screenshot-box">
+              <img src="capture_fo.png" alt="Synthèse Fibre Optique">
+              <div class="screenshot-caption">Extrait : Analyse théorique des zones mortes et du paramétrage OTDR.</div>
+            </div>
+
+            <div class="solution-box">
+              <strong>Ma solution :</strong> J'ai appliqué une rigueur de nettoyage des connecteurs et réalisé un étalonnage précis avec une puissance de référence $P_{ref} = -5,04 \text{ dBm}$. Cela m'a permis de mesurer sans erreur les pertes d'insertion sur mes bobines de 3 km et 5 km.
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px;">Bilan personnel</h3>
+          <p>
+            Ce projet m'a appris que la fiabilité d'un réseau dépend d'abord de sa couche physique. J'ai compris l'importance de la métrologie et de la précision des relevés pour diagnostiquer correctement des défauts de câblage ou des pertes optiques excessives.
+          </p>
+
+          <div style="margin-top: 50px; text-align: center;">
+            <a href="index.html#saes" class="btn btn--primary">← Retour à la liste des projets</a>
+          </div>
+        </div>
+
+        <div class="pres__card">
+          <h3>Compétences (AC)</h3>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div class="ac-tag"><strong>AC12.01</strong> - Mesurer les signaux physiques</div>
+            <div class="ac-tag"><strong>AC12.03</strong> - Caractériser les supports</div>
+            <div class="ac-tag"><strong>AC12.05</strong> - Mettre en œuvre un dispositif</div>
+          </div>
+        </div>
+
+        <div class="pres__card">
+          <h3>Matériel mobilisé</h3>
+          <ul class="skill-list">
+            <li><span class="skill-dot"></span>Oscilloscope Numérique</li>
+            <li><span class="skill-dot"></span>Analyseur DTF (Distance to Fault)</li>
+            <li><span class="skill-dot"></span>Photomètre & Source Optique</li>
+            <li><span class="skill-dot"></span>Câbles RG58 & Bobines de fibre</li>
+          </ul>
+        </div>
+
+        <div class="pres__card">
+          <h3>Traces & Preuves</h3>
+          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px;">Livrables et relevés de laboratoire :</p>
+          <a href="IMG_9846.jpg" class="trace-placeholder" style="text-decoration: none;" target="_blank">📸 Mes calculs manuscrits (Cuivre)</a>
+          <a href="IMG_9848.jpg" class="trace-placeholder" style="text-decoration: none;" target="_blank">📸 Mes relevés de pertes (Fibre)</a>
+          <a href="CU.md" class="trace-placeholder" style="text-decoration: none;" download>📄 Fiche de révision Cuivre</a>
+          <a href="FO.md" class="trace-placeholder" style="text-decoration: none;" download>📄 Fiche de révision Fibre</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <div class="footer__logo">Portfolio R&T</div>
+        <p>BUT Réseaux & Télécommunications<br/>IUT Grand Ouest Normandie</p>
+      </div>
+      <div class="footer__right">
+        <p class="footer__copy">© 2025 — Thomas Le Flêche</p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

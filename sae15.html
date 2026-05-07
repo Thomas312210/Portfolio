@@ -2,41 +2,160 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>Projet 1.5 - Traitement Données</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAÉ 1.5 - Traitement des données | Portfolio Thomas</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    .screenshot-box {
+      margin: 20px 0;
+      background: #1e1e1e; /* Fond sombre pour le code */
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-sm);
+      padding: 15px;
+      text-align: left;
+      overflow-x: auto;
+    }
+    .code-snippet {
+      font-family: 'Courier New', Courier, monospace;
+      color: #d4d4d4;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .code-highlight {
+      color: #ce9178; /* Couleur style chaîne de caractères/variables */
+    }
+    .code-keyword {
+      color: #569cd6; /* Couleur style mots-clés Python */
+    }
+    .screenshot-caption {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-style: italic;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .solution-box {
+      background: rgba(90, 122, 94, 0.05);
+      border-left: 4px solid var(--cyber);
+      padding: 15px;
+      margin: 15px 0;
+    }
+  </style>
 </head>
 <body>
+
   <nav class="nav">
     <div class="nav__logo">Portfolio R&T</div>
-    <ul class="nav__links"><li><a href="index.html">Accueil</a></li></ul>
+    <ul class="nav__links">
+      <li><a href="index.html">Retour à l'accueil</a></li>
+    </ul>
   </nav>
 
   <section class="section" style="padding-top: 120px;">
     <div class="container">
       <div class="section__label">Projet 1.5 — S1</div>
-      <h1 class="section__title">Traitement des données</h1>
+      <h1 class="section__title">Traiter des données</h1>
+      
       <div class="pres__grid" style="margin-top:40px;">
+        
         <div class="pres__card pres__card--main">
-          <h3>Développement Python</h3>
-          <p>Réalisation d'un projet de programmation pour automatiser la gestion de données :</p>
-          <ul class="skill-list">
-            <li><span class="skill-dot"></span>Interrogation d'une <strong>API REST</strong> (comme OpenStreetMap) pour récupérer des données en temps réel.</li>
-            <li><span class="skill-dot"></span>Parsing et traitement des formats <strong>JSON et XML</strong>.</li>
-            <li><span class="skill-dot"></span>Génération automatique d'un rapport de synthèse au format <strong>Markdown</strong>.</li>
-          </ul>
-          <h3>Autoévaluation</h3>
-          <p>Ce projet a renforcé ma logique algorithmique. L'aspect le plus formateur a été la gestion des erreurs lors de la récupération des données sur le réseau.</p>
+          <h3>Sujet : Où a-t-on le plus de chances de se ruiner aux USA ?</h3>
+          <p>
+            Mon projet consistait à développer un script Python capable d'interroger l'API <strong>Overpass (OpenStreetMap)</strong> pour recenser l'ensemble des banques et des casinos aux États-Unis. En calculant le ratio Banques/Casinos, j'ai pu automatiser la génération d'un classement au format Markdown. Au total, près de <strong>500 000 lieux géographiques</strong> ont été analysés.
+          </p>
+
+          <h3 style="margin-top: 30px;">Difficultés rencontrées & Solutions</h3>
           
-          <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
-            <a href="index.html#saes" class="btn btn--primary">← Retour à l'accueil</a>
+          <div class="problem-section">
+            <h4>1. Limites de l'API face aux données massives</h4>
+            <p>
+              Requêter l'intégralité des banques et casinos des États-Unis représente un volume d'informations gigantesque. L'API refusait initialement de traiter la demande et coupait la connexion (Timeout) ou renvoyait une erreur de mémoire saturée.
+            </p>
+            
+            <div class="screenshot-box">
+              <div class="code-snippet">
+<span class="code-keyword">requete_usa</span> = <span class="code-highlight">"""</span><br>
+<span class="code-highlight">    [out:json][timeout:300][maxsize:200000000];</span><br>
+<span class="code-highlight">    area["ISO3166-1"="US"]->.searchArea;</span><br>
+<span class="code-highlight">"""</span>
+              </div>
+              <div class="screenshot-caption">Extrait de ma requête Overpass QL.</div>
+            </div>
+
+            <div class="solution-box">
+              <strong>Ma solution :</strong> J'ai dû analyser la documentation d'Overpass pour optimiser ma requête. J'ai forcé manuellement l'allocation mémoire à 200 Mo (<code>maxsize:200000000</code>) et le délai d'expiration à 5 minutes (<code>timeout:300</code>) pour permettre au serveur d'OpenStreetMap de compiler la donnée.
+            </div>
+          </div>
+
+          <div class="problem-section" style="margin-top: 30px;">
+            <h4>2. Nettoyage de données et Division par zéro</h4>
+            <p>
+              Dans les données JSON reçues, le tag <code>addr:state</code> était très hétérogène (ex: "CA" ou "California"). De plus, lors du calcul du ratio, des états comme l'Alaska ou Hawaï n'ayant aucun casino provoquaient un crash de mon programme (<code>ZeroDivisionError</code>).
+            </p>
+
+            <div class="screenshot-box">
+              <div class="code-snippet">
+<span class="code-keyword">if</span> nb_casinos > <span class="code-keyword">0</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ratio = <span class="code-keyword">round</span>(nb_banques / nb_casinos, <span class="code-keyword">2</span>)<br>
+<span class="code-keyword">else</span>:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;ratio = <span class="code-keyword">999999</span>
+              </div>
+              <div class="screenshot-caption">Sécurisation du calcul mathématique en Python.</div>
+            </div>
+
+            <div class="solution-box">
+              <strong>Ma solution :</strong> J'ai d'abord créé un dictionnaire de correspondance pour normaliser les noms d'états avec la méthode <code>.title()</code>. Ensuite, j'ai sécurisé mon algorithme avec une condition de contrôle (<code>if nb_casinos > 0</code>) pour intercepter le cas mathématique impossible, me permettant d'afficher proprement "Pas de casino" dans le rapport final.
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px;">Bilan</h3>
+          <p>
+            Ce projet m'a prouvé que le code en entreprise implique de gérer l'imprévu (serveurs capricieux, données mal formatées). Le script final est robuste et le rapport a révélé que le <strong>Nevada</strong> possède le ratio le plus critique (1.19 banque par casino).
+          </p>
+
+          <div style="margin-top: 50px; text-align: center;">
+            <a href="index.html#saes" class="btn btn--primary">← Retour à la liste des projets</a>
           </div>
         </div>
+
         <div class="pres__card">
           <h3>Compétences (AC)</h3>
-          <p class="ac-tag">AC13.02</p><p class="ac-tag">AC13.03</p><p class="ac-tag">AC13.05</p>
+          <p class="ac-tag">AC13.02 - Lire, exécuter et modifier un programme</p>
+          <p class="ac-tag">AC13.03 - Traduire un algorithme</p>
+          <p class="ac-tag">AC13.05 - Choisir les mécanismes de données</p>
         </div>
+
+        <div class="pres__card">
+          <h3>Outils utilisés</h3>
+          <ul class="skill-list">
+            <li><span class="skill-dot"></span>Python 3 (Requests, OS)</li>
+            <li><span class="skill-dot"></span>API REST Overpass</li>
+            <li><span class="skill-dot"></span>JSON & Markdown</li>
+          </ul>
+        </div>
+        
+        <div class="pres__card">
+          <h3>Traces</h3>
+          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px;">Livrables générés par mon script :</p>
+          <a href="#" class="trace-placeholder" style="text-decoration: none;">📄 partie_2.py (Code Source)</a>
+          <a href="#" class="trace-placeholder" style="text-decoration: none;">📄 rapport_usa.md (Résultat)</a>
+        </div>
+
       </div>
     </div>
   </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <p>BUT Réseaux & Télécommunications</p>
+      </div>
+      <div class="footer__right">
+        <p>© 2025 — Thomas Le Flêche</p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

@@ -2,46 +2,170 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <title>SAÉ 1.4 - Portfolio Thomas Le Flêche</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAÉ 1.4 - Se présenter sur Internet | Portfolio Thomas</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    .screenshot-box {
+      margin: 20px 0;
+      background: #1e1e1e;
+      border: 1px solid var(--border-accent);
+      border-radius: var(--radius-sm);
+      padding: 15px;
+      text-align: left;
+      overflow-x: auto;
+    }
+    .code-snippet {
+      font-family: 'Courier New', Courier, monospace;
+      color: #d4d4d4;
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+    .code-highlight { color: #ce9178; }
+    .code-keyword { color: #569cd6; }
+    .code-css-prop { color: #9cdcfe; }
+    .screenshot-caption {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      font-style: italic;
+      margin-top: 10px;
+      text-align: center;
+    }
+    .solution-box {
+      background: rgba(90, 122, 94, 0.05);
+      border-left: 4px solid var(--cyber);
+      padding: 15px;
+      margin: 15px 0;
+    }
+  </style>
 </head>
 <body>
+
   <nav class="nav">
     <div class="nav__logo">Portfolio R&T</div>
-    <ul class="nav__links"><li><a href="index.html">Accueil</a></li></ul>
+    <ul class="nav__links">
+      <li><a href="index.html">Retour à l'accueil</a></li>
+    </ul>
   </nav>
 
   <section class="section" style="padding-top: 120px;">
     <div class="container">
       <div class="section__label">Projet 1.4 — S1</div>
       <h1 class="section__title">Se présenter sur Internet</h1>
+      
       <div class="pres__grid" style="margin-top:40px;">
+        
         <div class="pres__card pres__card--main">
-          <h3>Description du projet</h3>
+          <h3>Le projet : Site biographique sur Pedri González</h3>
           <p>
-            Création d'un site Internet complet sur un sujet libre, développé intégralement de A à Z (*from scratch*). 
-            La contrainte technique majeure de ce projet était de rédiger l'ensemble du code source manuellement, 
-            exclusivement en <strong>HTML et CSS</strong>, et sans aucune assistance d'intelligences artificielles ou de frameworks.
+            Pour cette SAÉ, j'ai choisi de concevoir un site web dédié au footballeur du FC Barcelone, Pedri. La véritable plus-value de ce projet est que j'ai développé l'interface <strong>entièrement à la main</strong>, exclusivement en <strong>HTML5 et CSS3</strong>, sans utiliser d'intelligences artificielles.
           </p>
+
+          <h3 style="margin-top: 30px;">Difficultés rencontrées & Solutions</h3>
           
-          <h3>Analyse et Autoévaluation</h3>
+          <div class="problem-section">
+            <h4>1. L'adaptation sur Mobile (Responsive Design)</h4>
+            <p>
+              Créer une galerie d'images et un menu de navigation fluides sur ordinateur est une chose, mais faire en sorte que l'affichage reste lisible sur un smartphone en est une autre. Sans framework, j'ai dû gérer moi-même la réorganisation des blocs.
+            </p>
+            
+            <div class="screenshot-box">
+              <div class="code-snippet">
+<span class="code-keyword">@media</span> screen and (max-width: <span class="code-highlight">768px</span>) {<br>
+&nbsp;&nbsp;<span class="code-keyword">header nav</span> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-css-prop">display</span>: flex;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-css-prop">flex-direction</span>: column;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-css-prop">align-items</span>: center;<br>
+&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;<span class="code-keyword">.image-gallery, .photo-palmares</span> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="code-css-prop">flex-direction</span>: column;<br>
+&nbsp;&nbsp;}<br>
+}
+              </div>
+              <div class="screenshot-caption">Extrait de mon fichier acceuil.css : Gestion du Responsive.</div>
+            </div>
+
+            <div class="solution-box">
+              <strong>Ma solution :</strong> J'ai utilisé les <strong>Media Queries</strong>. Dès que l'écran passe sous la barre des 768px, la propriété <code>flex-direction: column;</code> force le menu de navigation et les galeries photos à s'empiler verticalement plutôt que horizontalement.
+            </div>
+          </div>
+
+          <div class="problem-section" style="margin-top: 30px;">
+            <h4>2. Créer une interface moderne sans framework</h4>
+            <p>
+              Je voulais un design attrayant, avec des effets de transparence sur le menu fixe et des animations au survol des images, sans alourdir le code avec du Javascript complexe.
+            </p>
+
+            <div class="screenshot-box">
+              <div class="code-snippet">
+<span class="code-keyword">header</span> {<br>
+&nbsp;&nbsp;<span class="code-css-prop">background-color</span>: rgba(<span class="code-highlight">30, 40, 60, 0.1</span>);<br>
+&nbsp;&nbsp;<span class="code-css-prop">backdrop-filter</span>: blur(<span class="code-highlight">4px</span>);<br>
+&nbsp;&nbsp;<span class="code-css-prop">position</span>: fixed;<br>
+&nbsp;&nbsp;<span class="code-css-prop">z-index</span>: 1000;<br>
+}<br>
+<br>
+<span class="code-keyword">@keyframes</span> slide-bottom {<br>
+&nbsp;&nbsp;<span class="code-highlight">0%</span> { <span class="code-css-prop">transform</span>: translateY(<span class="code-highlight">-50px</span>); <span class="code-css-prop">opacity</span>: <span class="code-highlight">0</span>; }<br>
+&nbsp;&nbsp;<span class="code-highlight">100%</span> { <span class="code-css-prop">transform</span>: translateY(<span class="code-highlight">0</span>); <span class="code-css-prop">opacity</span>: <span class="code-highlight">1</span>; }<br>
+}
+              </div>
+              <div class="screenshot-caption">Extrait de mon code : Effet "Glassmorphism" et Animations CSS.</div>
+            </div>
+
+            <div class="solution-box">
+              <strong>Ma solution :</strong> J'ai exploité des propriétés CSS avancées. Pour le menu, la propriété <code>backdrop-filter: blur(4px)</code> m'a permis de créer un effet "verre dépoli" très moderne (Glassmorphism). J'ai également intégré des règles <code>@keyframes</code> pour créer des animations fluides au survol de la photo de profil.
+            </div>
+          </div>
+
+          <h3 style="margin-top: 40px;">Bilan</h3>
           <p>
-            Cette démarche 100% manuelle a été extrêmement formatrice. Le fait de devoir coder chaque balise et chaque règle de style m'a obligé à comprendre précisément le comportement des éléments dans le navigateur (flux documentaire, positionnement, responsivité). 
-            Cela m'a permis d'acquérir une véritable autonomie sur la création d'interfaces web pures.
+            Ce projet m'a prouvé qu'il est possible de créer un site professionnel et esthétique en maîtrisant uniquement les bases natives du web. Cela m'a donné des bases très solides sur le "Box Model" et le positionnement CSS, qui m'ont d'ailleurs servi pour concevoir ce portfolio !
           </p>
-          
-          <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 20px;">
-            <a href="index.html#saes" class="btn btn--primary">← Retour à l'accueil</a>
+
+          <div style="margin-top: 50px; text-align: center;">
+            <a href="index.html#saes" class="btn btn--primary">← Retour à la liste des projets</a>
           </div>
         </div>
+
         <div class="pres__card">
-          <h3>Compétences visées</h3>
+          <h3>Compétences (AC)</h3>
           <p class="ac-tag">AC13.01 - Utiliser un système informatique et ses outils</p>
           <p class="ac-tag">AC13.04 - Connaître l'architecture et les technologies d'un site Web</p>
         </div>
+
+        <div class="pres__card">
+          <h3>Technologies utilisées</h3>
+          <ul class="skill-list">
+            <li><span class="skill-dot"></span>HTML5 (Sémantique)</li>
+            <li><span class="skill-dot"></span>CSS3 (Flexbox, Animations)</li>
+            <li><span class="skill-dot"></span>Media Queries (Responsive)</li>
+          </ul>
+        </div>
+        
+        <div class="pres__card">
+          <h3>Traces et Code Source</h3>
+          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px;">Mes fichiers codés à la main :</p>
+          <a href="index.html" class="trace-placeholder" style="text-decoration: none;" download>📄 index.html</a>
+          <a href="acceuil.css" class="trace-placeholder" style="text-decoration: none;" download>🎨 acceuil.css</a>
+          <a href="Qui-est-Pedri.html" class="trace-placeholder" style="text-decoration: none;" download>📄 Qui-est-Pedri.html</a>
+        </div>
+
       </div>
     </div>
   </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <p>BUT Réseaux & Télécommunications</p>
+      </div>
+      <div class="footer__right">
+        <p>© 2025 — Thomas Le Flêche</p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>
