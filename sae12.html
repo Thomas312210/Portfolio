@@ -3,9 +3,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SAÉ 1.2 - Portfolio Thomas Le Flêche</title>
+  <title>SAÉ 1.2 - S'initier aux réseaux | Portfolio Thomas</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    .screenshot-box {
+      margin: 20px 0;
+      background: #fdfdfd;
+      border: 1px dashed var(--border-accent);
+      border-radius: var(--radius-sm);
+      padding: 15px;
+      text-align: center;
+    }
+    .screenshot-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .code-snippet {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      padding: 15px;
+      border-radius: 8px;
+      text-align: left;
+      overflow-x: auto;
+      border: 1px solid var(--border-accent);
+    }
+    .cisco-cmd { color: #569cd6; font-weight: bold; } /* Mots-clés Cisco */
+    .cisco-ip { color: #b5cea8; } /* Adresses IP */
+    
+    .solution-box {
+      background: rgba(90, 122, 94, 0.05);
+      border-left: 4px solid var(--cyber);
+      padding: 15px;
+      margin: 15px 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -21,7 +58,7 @@
       <div class="section__label">Projet 1.2 — Semestre 1</div>
       <h1 class="section__title">S'initier aux réseaux informatiques</h1>
       <p class="section__intro">
-        Conception et mise en œuvre d'une infrastructure réseau stable et sécurisée, incluant le déploiement de postes clients et l'administration des flux.
+        Conception, adressage et configuration (Cisco IOS) d'une infrastructure réseau d'entreprise complète.
       </p>
     </div>
   </section>
@@ -31,48 +68,103 @@
       
       <div class="pres__grid">
         <div class="pres__card pres__card--main">
-          <h3>Missions et Réalisations</h3>
+          <h3>Architecture du projet</h3>
           <p>
-            Cette SAÉ consistait à construire un réseau local (LAN) multi-réseaux et multi-VLAN. J'ai dû appréhender la diversité des constituants d'un réseau et assurer leur fonctionnement stable.
+            L'objectif de cette SAÉ était de déployer un réseau local (LAN) sécurisé et fonctionnel à partir de zéro. J'ai dû élaborer le plan d'adressage IP, configurer les équipements (Switchs et Routeurs Cisco) et valider la connectivité globale.
           </p>
+
+          <div class="screenshot-box" style="margin-top: 25px;">
+            <img src="image_2a3c79.png" alt="Schéma logique du réseau">
+            <p style="font-size: 0.8rem; color: var(--text-dim); font-style: italic; margin-top: 10px;">Topologie réseau : Cœur de réseau multicouche, distribution et routeur de bordure.</p>
+          </div>
+
+          <h3 style="margin-top: 40px;">Difficultés rencontrées & Solutions</h3>
           
-          <h4 style="margin-top: 20px; color: var(--accent);">Architecture et Interconnexion</h4>
-          <ul class="skill-list">
-            <li><span class="skill-dot"></span><strong>Plan d'adressage :</strong> Mise en œuvre d'un plan IPv4 structuré pour l'ensemble de l'infrastructure.</li>
-            <li><span class="skill-dot"></span><strong>Commutation avancée :</strong> Configuration de commutateurs L2 (Cisco 2960) et L2/L3 (Cisco 3560) avec les protocoles <strong>RSTP</strong> et <strong>EtherChannel</strong> (agrégation de liens).</li>
-            <li><span class="skill-dot"></span><strong>Routage :</strong> Configuration du routage inter-VLAN et mise en place de <strong>routage statique</strong> sur un routeur LAN/WAN Cisco 2911.</li>
-          </ul>
+          <div class="problem-section">
+            <h4>1. Routage Inter-VLAN et distribution DHCP</h4>
+            <p>
+              Le cahier des charges exigeait la création de multiples VLANs (Compta, Admin, Vente, etc.) isolés au niveau 2, mais capables de communiquer au niveau 3. De plus, chaque PC devait recevoir une IP dynamiquement sans avoir de serveur DHCP physique dédié.
+            </p>
+            
+            <div class="code-snippet" style="margin: 15px 0;">
+<span class="cisco-cmd">interface vlan</span> 210<br>
+&nbsp;description Passerelle_Compta<br>
+&nbsp;<span class="cisco-cmd">ip address</span> <span class="cisco-ip">172.17.210.254 255.255.255.0</span><br>
+&nbsp;<span class="cisco-cmd">no shutdown</span><br><br>
+<span class="cisco-cmd">ip dhcp pool</span> POOL_COMPTA<br>
+&nbsp;<span class="cisco-cmd">network</span> <span class="cisco-ip">172.17.210.0 255.255.255.0</span><br>
+&nbsp;<span class="cisco-cmd">default-router</span> <span class="cisco-ip">172.17.210.254</span>
+            </div>
 
-          <h4 style="margin-top: 20px; color: var(--accent);">Sécurisation et Système</h4>
-          <ul class="skill-list">
-            <li><span class="skill-dot"></span><strong>Sécurité des ports :</strong> Limitation du "MAC Flooding" et prévention des tempêtes de broadcast.</li>
-            <li><span class="skill-dot"></span><strong>Déploiement client :</strong> Installation et configuration d'une machine virtuelle <strong>Debian</strong> avec gestion de plusieurs disques et cartes réseau.</li>
-          </ul>
+            <div class="solution-box">
+              <strong>Ma solution :</strong> J'ai transformé le commutateur de cœur de réseau en <strong>Switch Multicouche (Layer 3)</strong>. J'y ai configuré des interfaces virtuelles (SVI) servant de passerelles par défaut, et j'ai activé le service DHCP directement sur l'équipement Cisco en excluant les adresses des routeurs pour éviter les conflits.
+            </div>
+          </div>
 
-          <h3 style="margin-top: 40px;">Autoévaluation</h3>
-          <p>
-            Ce projet a été ma première confrontation réelle avec du matériel d'entreprise. J'ai appris que la compréhension des interactions entre les équipements est nécessaire avant toute intervention technique.
-          </p>
-          <p>
-            <strong>Point fort :</strong> Maîtrise de la configuration en ligne de commande (CLI) Cisco.
-            <br><strong>Axe de progrès :</strong> Optimisation de la surveillance des flux pour anticiper les pannes.
-          </p>
+          <div class="problem-section" style="margin-top: 30px;">
+            <h4>2. Sécurisation de l'accès Internet (NAT)</h4>
+            <p>
+              Les postes internes utilisaient un adressage privé (172.17.0.0/16). Pour qu'ils puissent accéder à Internet via la Box ADSL (192.168.111.1), il fallait masquer ces adresses privées.
+            </p>
 
-          <div style="margin-top: 50px; border-top: 1px solid var(--border); padding-top: 30px; text-align: center;">
+            <div class="code-snippet" style="margin: 15px 0;">
+<span class="cisco-cmd">access-list</span> 1 <span class="cisco-cmd">permit</span> <span class="cisco-ip">172.17.0.0 0.0.255.255</span><br>
+<span class="cisco-cmd">ip nat inside source list</span> 1 <span class="cisco-cmd">interface</span> GigabitEthernet0/2 <span class="cisco-cmd">overload</span><br><br>
+<span class="cisco-cmd">ip route</span> <span class="cisco-ip">0.0.0.0 0.0.0.0 192.168.111.1</span>
+            </div>
+
+            <div class="solution-box">
+              <strong>Ma solution :</strong> Sur le routeur de bordure, j'ai implémenté le protocole <strong>PAT (NAT Overload)</strong>. J'ai créé une liste de contrôle d'accès (ACL) autorisant uniquement notre réseau local à être traduit vers l'adresse publique de l'interface de sortie (Gig0/2). J'ai enfin ajouté une route par défaut vers le FAI.
+            </div>
+          </div>
+
+          <div style="margin-top: 50px; text-align: center;">
             <a href="index.html#saes" class="btn btn--primary">← Retour à la liste des projets</a>
           </div>
         </div>
 
         <div class="pres__card">
-          <h3>Apprentissages Critiques (AC)</h3>
+          <h3>Compétences (AC)</h3>
           <div style="display: flex; flex-direction: column; gap: 8px;">
-            <div class="ac-tag"><strong>AC11.03</strong> - Configurer les fonctions de base</div>
-            <div class="ac-tag"><strong>AC11.04</strong> - Maîtriser les systèmes d'exploitation</div>
-            <div class="ac-tag"><strong>AC11.06</strong> - Installer un poste client</div>
+            <div class="ac-tag"><strong>AC11.01</strong> - Maîtriser le modèle OSI et TCP/IP</div>
+            <div class="ac-tag"><strong>AC11.03</strong> - Configurer des fonctions de base</div>
+            <div class="ac-tag"><strong>AC11.06</strong> - Câbler et valider un réseau</div>
           </div>
         </div>
 
         <div class="pres__card">
-          <h3>Équipements mobilisés</h3>
+          <h3>Technologies & Outils</h3>
           <ul class="skill-list">
-            <li><span class="skill
+            <li><span class="skill-dot"></span>Cisco IOS (CLI)</li>
+            <li><span class="skill-dot"></span>Switching : VLANs, Trunk, STP, EtherChannel</li>
+            <li><span class="skill-dot"></span>Routage : IPv4, SVI, NAT, DHCP</li>
+            <li><span class="skill-dot"></span>Cisco Packet Tracer / Visio</li>
+          </ul>
+        </div>
+
+        <div class="pres__card">
+          <h3>Traces & Configurations</h3>
+          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px;">Fichiers de configuration complets :</p>
+          <a href="schema_logique_2.vsdx" class="trace-placeholder" style="text-decoration: none;" download>📊 Schéma Visio (.vsdx)</a>
+          <a href="switch multilayer.txt" class="trace-placeholder" style="text-decoration: none;" download>📄 Config Switch Cœur de réseau</a>
+          <a href="switch.txt" class="trace-placeholder" style="text-decoration: none;" download>📄 Config Switch d'accès</a>
+          <a href="routeur.txt" class="trace-placeholder" style="text-decoration: none;" download>📄 Config Routeur NAT</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <p>BUT Réseaux & Télécommunications</p>
+      </div>
+      <div class="footer__right">
+        <p>© 2025 — Thomas Le Flêche</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
