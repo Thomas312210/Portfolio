@@ -6,6 +6,60 @@
   <title>Portfolio — BUT R&T | IUT Grand Ouest Normandie</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* Styles pour l'accueil */
+    .hero__name {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.8rem; 
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 10px 0;
+      color: #000000; /* Nom en noir */
+    }
+
+    .hero__photo-placeholder {
+      width: 200px !important;
+      height: 200px !important;
+      border: 3px solid #e3b04b;
+      padding: 5px;
+      margin: 20px auto;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    }
+    
+    .hero__photo-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .hero__badge {
+      background: #e3b04b !important;
+      color: #0d0d0d !important;
+      font-size: 1rem !important;
+      padding: 10px 25px !important;
+      border-radius: 50px;
+      font-weight: 700 !important;
+      display: inline-block;
+      box-shadow: 0 4px 15px rgba(227, 176, 75, 0.2);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero__title {
+      font-size: 1.1rem;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 20px;
+    }
+
+    /* Justification du texte de présentation */
+    .pres__card--main p {
+      text-align: justify;
+    }
+  </style>
 </head>
 <body>
 
@@ -15,7 +69,7 @@
       <li><a href="#accueil">Accueil</a></li>
       <li><a href="#presentation">Présentation</a></li>
       <li><a href="#saes">Projets</a></li>
-      <li><a href="bilan.html">Bilan Global</a></li>
+      <li><a href="bilan.html" onclick="window.location.href='bilan.html'; return false;">Bilan Global</a></li>
     </ul>
     <button class="nav__burger" id="burger" aria-label="Menu">
       <span></span><span></span><span></span>
@@ -30,21 +84,18 @@
     </div>
     <div class="hero__content">
       <div class="hero__badge">BUT Réseaux & Télécommunications</div>
-      <h1 class="hero__title">
-        Mon<br /><span class="hero__accent">Portfolio</span><br />Professionnel
-      </h1>
-      <p class="hero__subtitle">
-        Le Flêche Thomas<br />
-      </p>
+      <p class="hero__title">Mon Portfolio Professionnel</p>
+      <h1 class="hero__name">Thomas Le Flêche</h1>
+
       <div class="hero__photo-wrap">
         <div class="hero__photo-placeholder">
-          <svg viewBox="0 0 80 80" fill="none"><circle cx="40" cy="32" r="18" fill="var(--accent-dim)"/><ellipse cx="40" cy="72" rx="28" ry="18" fill="var(--accent-dim)"/></svg>
-          <span><img src="moi.jpeg" alt=""></span>
+          <img src="moi.jpeg" alt="Thomas Le Flêche">
         </div>
       </div>
+
       <div class="hero__cta">
         <a href="#saes" class="btn btn--primary">Voir mes Projets</a>
-        <a href="bilan.html" class="btn btn--ghost">Bilan de compétences</a>
+        <a href="bilan.html" class="btn btn--ghost" onclick="window.location.href='bilan.html'; return false;">Bilan de compétences</a>
       </div>
     </div>
     <div class="hero__scroll">↓</div>
@@ -52,7 +103,7 @@
 
   <section class="section" id="presentation">
     <div class="container">
-      <div class="section__label">02 — Présentation</div>
+      <div class="section__label">Présentation</div>
       <h2 class="section__title">Qui suis-je ?</h2>
 
       <div class="pres__grid">
@@ -83,9 +134,9 @@
         <div class="pres__card">
           <h3>Compétences clés</h3>
           <ul class="skill-list">
-            <li><span class="skill-dot"></span>Administration réseaux et Internet</li>
-            <li><span class="skill-dot"></span>Connexion entreprises et usagers</li>
-            <li><span class="skill-dot"></span>Développement d'outils Réseaux et Télécommunications</li>
+            <li><span class="skill-dot" style="background: #e3b04b;"></span>Administration réseaux et Internet</li>
+            <li><span class="skill-dot" style="background: #e3b04b;"></span>Connexion entreprises et usagers</li>
+            <li><span class="skill-dot" style="background: #e3b04b;"></span>Développement d'outils Réseaux et Télécommunications</li>
           </ul>
         </div>
 
@@ -113,7 +164,7 @@
 
   <section class="section section--dark" id="saes">
     <div class="container">
-      <div class="section__label">03 — Situations d'Apprentissage</div>
+      <div class="section__label">Situations d'Apprentissage</div>
       <h2 class="section__title">Mes Projets</h2>
       <p class="section__intro">
         Chaque Projet constitue une mise en situation professionnelle réelle.
@@ -133,9 +184,7 @@
           </div>
           <h3 class="sae-card__title">Sensibilisation à l'hygiène informatique</h3>
           <div class="sae-card__acs">
-            <span class="ac-tag">AC11.02</span>
-            <span class="ac-tag">AC11.04</span>
-            <span class="ac-tag">AC11.05</span>
+            <span class="ac-tag">AC11.02</span><span class="ac-tag">AC11.04</span><span class="ac-tag">AC11.05</span>
           </div>
           <div style="margin-top: 15px; margin-bottom: 20px;">
             <p style="color: var(--text-muted); font-size: 0.9rem;">Analyse de la politique de sécurité et identification des risques en milieu professionnel.</p>
@@ -150,10 +199,7 @@
           </div>
           <h3 class="sae-card__title">S'initier aux réseaux informatiques</h3>
           <div class="sae-card__acs">
-            <span class="ac-tag">AC11.01</span>
-            <span class="ac-tag">AC11.02</span>
-            <span class="ac-tag">AC11.03</span>
-            <span class="ac-tag">AC11.06</span>
+            <span class="ac-tag">AC11.01</span><span class="ac-tag">AC11.02</span><span class="ac-tag">AC11.03</span><span class="ac-tag">AC11.06</span>
           </div>
           <div style="margin-top: 15px; margin-bottom: 20px;">
             <p style="color: var(--text-muted); font-size: 0.9rem;">Configuration de base d'un réseau local et installation de postes clients.</p>
@@ -168,9 +214,7 @@
           </div>
           <h3 class="sae-card__title">Découverte des dispositifs de transmission</h3>
           <div class="sae-card__acs">
-            <span class="ac-tag">AC12.01</span>
-            <span class="ac-tag">AC12.03</span>
-            <span class="ac-tag">AC12.05</span>
+            <span class="ac-tag">AC12.01</span><span class="ac-tag">AC12.03</span><span class="ac-tag">AC12.05</span>
           </div>
           <div style="margin-top: 15px; margin-bottom: 20px;">
             <p style="color: var(--text-muted); font-size: 0.9rem;">Mesure et analyse de signaux pour comprendre les principes de la transmission de données.</p>
@@ -185,8 +229,7 @@
           </div>
           <h3 class="sae-card__title">Se présenter sur Internet</h3>
           <div class="sae-card__acs">
-            <span class="ac-tag">AC13.01</span>
-            <span class="ac-tag">AC13.04</span>
+            <span class="ac-tag">AC13.01</span><span class="ac-tag">AC13.04</span>
           </div>
           <div style="margin-top: 15px; margin-bottom: 20px;">
             <p style="color: var(--text-muted); font-size: 0.9rem;">Apprentissage de l'architecture d'un site Web et utilisation des outils de développement.</p>
@@ -201,9 +244,7 @@
           </div>
           <h3 class="sae-card__title">Traitement des données</h3>
           <div class="sae-card__acs">
-            <span class="ac-tag">AC13.02</span>
-            <span class="ac-tag">AC13.03</span>
-            <span class="ac-tag">AC13.05</span>
+            <span class="ac-tag">AC13.02</span><span class="ac-tag">AC13.03</span><span class="ac-tag">AC13.05</span>
           </div>
           <div style="margin-top: 15px; margin-bottom: 20px;">
             <p style="color: var(--text-muted); font-size: 0.9rem;">Lire, exécuter et modifier un programme pour traiter des ensembles de données.</p>
@@ -216,23 +257,21 @@
 
   <section class="section" id="bilans">
     <div class="container">
-      <div class="section__label">04 — Bilans</div>
+      <div class="section__label">Bilans</div>
       <h2 class="section__title">Bilan par compétence (Semestre 1)</h2>
 
       <div class="bilans__grid">
-
         <div class="bilan-card">
           <div class="bilan-card__icon">🖧</div>
           <div class="bilan-card__code">RT1</div>
           <h3>Administrer les réseaux et l'Internet</h3>
           <div class="bilan-card__level">
             <span class="level-label">Progression Niveau 1</span>
-            <div class="level-bar"><div class="level-fill" style="width:85%"></div></div>
+            <div class="level-bar"><div class="level-fill" style="width:85%; background: #e3b04b;"></div></div>
             <span class="level-pct">En cours de validation</span>
           </div>
           <p class="bilan-card__text">
             Grâce aux <strong>Projets 1.1 et 1.2</strong>, j'ai acquis les bases de l'administration système et réseau. Je maîtrise désormais l'installation d'un poste client et la configuration de base d'un réseau local (LAN). La sensibilisation à l'hygiène informatique m'a permis d'intégrer les bonnes pratiques de sécurité dès la phase de déploiement. 
-            <br><br><strong>Objectif :</strong> Approfondir le diagnostic de pannes complexes au S2.
           </p>
         </div>
 
@@ -242,12 +281,11 @@
           <h3>Connecter les entreprises et les usagers</h3>
           <div class="bilan-card__level">
             <span class="level-label">Progression Niveau 1</span>
-            <div class="level-bar"><div class="level-fill" style="width:70%"></div></div>
+            <div class="level-bar"><div class="level-fill" style="width:70%; background: #e3b04b;"></div></div>
             <span class="level-pct">En cours de validation</span>
           </div>
           <p class="bilan-card__text">
-            Le <strong>Projet 1.3</strong> a été central pour cette compétence. J'ai appris à utiliser des outils de mesure comme l'oscilloscope pour analyser des signaux et valider la qualité d'une transmission. J'ai également progressé sur ma capacité à communiquer des informations techniques de manière claire à un tiers.
-            <br><br><strong>À renforcer :</strong> La modélisation mathématique des signaux.
+            Le <strong>Projet 1.3</strong> a été central pour cette compétence. J'ai appris à utiliser des outils de mesure comme l'oscilloscope pour analyser des signaux et valider la qualité d'une transmission.
           </p>
         </div>
 
@@ -257,27 +295,18 @@
           <h3>Créer des outils et applications R&T</h3>
           <div class="bilan-card__level">
             <span class="level-label">Progression Niveau 1</span>
-            <div class="level-bar"><div class="level-fill" style="width:75%"></div></div>
+            <div class="level-bar"><div class="level-fill" style="width:75%; background: #e3b04b;"></div></div>
             <span class="level-pct">En cours de validation</span>
           </div>
           <p class="bilan-card__text">
-            Les <strong>Projets 1.4 et 1.5</strong> m'ont permis de m'initier au développement. Je comprends aujourd'hui l'architecture d'un site web et je suis capable de modifier un programme pour traiter des données. L'utilisation d'outils collaboratifs durant ces projets a renforcé ma méthodologie de travail.
-            <br><br><strong>Objectif :</strong> Maîtriser davantage la gestion de bases de données au S2.
+            Les <strong>Projets 1.4 et 1.5</strong> m'ont permis de m'initier au développement. Je comprends aujourd'hui l'architecture d'un site web et je suis capable de modifier un programme pour traiter des données.
           </p>
         </div>
-
-      </div>
-
-      <div class="legend">
-        <span class="legend-item"><span class="ac-status ac-status--ok">✓</span> Maîtrisé</span>
-        <span class="legend-item"><span class="ac-status ac-status--progress">~</span> En cours</span>
-        <span class="legend-item"><span class="ac-status ac-status--todo">○</span> À travailler</span>
       </div>
 
       <div style="text-align: center; margin-top: 40px;">
-        <a href="bilan.html" class="btn btn--primary">Consulter mon Bilan de Compétences complet →</a>
+        <a href="bilan.html" class="btn btn--primary" style="background: #e3b04b; color: #0d0d0d;" onclick="window.location.href='bilan.html'; return false;">Consulter mon Bilan de Compétences complet →</a>
       </div>
-
     </div>
   </section>
 
@@ -289,7 +318,7 @@
       </div>
       <div class="footer__right">
         <p>Structure &amp; attendus définis par l'IUT Grand Ouest Normandie</p>
-        <p class="footer__copy">© 2025 —  Le Flêche Thomas</p>
+        <p class="footer__copy">© 2026 —  Le Flêche Thomas</p>
       </div>
     </div>
   </footer>
