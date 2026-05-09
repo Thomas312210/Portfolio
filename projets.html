@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mes Projets — Thomas Le Flêche</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <nav class="nav" id="nav">
+    <div class="nav__logo">Portfolio R&T</div>
+    <ul class="nav__links">
+      <li><a href="index.html">← Retour à l'accueil</a></li>
+    </ul>
+  </nav>
+
+  <section class="section" style="padding-top: 120px; min-height: 100vh;">
+    <div class="container">
+      <h1 class="section__title" style="font-size: 3rem; margin-bottom: 20px;">Galerie des Projets</h1>
+      <p class="section__intro" style="margin-bottom: 40px;">
+        Cliquez sur une carte pour découvrir mon analyse complète et mes livrables sur une page dédiée.
+      </p>
+
+      <div class="saes__filters">
+        <button class="filter-btn active" data-filter="all">Toutes</button>
+        <button class="filter-btn" data-filter="s1">S1</button>
+      </div>
+
+      <div class="saes__grid">
+        <article class="sae-card" data-sem="s1">
+          <div class="sae-card__header">
+            <span class="sae-card__code">Projet 1.1</span>
+            <span class="sae-card__sem">S1</span>
+          </div>
+          <h3 class="sae-card__title">Sensibilisation à l'hygiène informatique</h3>
+          <div class="sae-card__acs">
+            <span class="ac-tag">AC11.02</span><span class="ac-tag">AC11.04</span><span class="ac-tag">AC11.05</span>
+          </div>
+          <div style="margin-top: 15px; margin-bottom: 20px;">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Analyse de la politique de sécurité et identification des risques en milieu professionnel.</p>
+          </div>
+          <a href="sae11.html" class="btn btn--ghost" style="width: 100%; justify-content: center;">Voir le projet complet →</a>
+        </article>
+
+        <article class="sae-card" data-sem="s1">
+          <div class="sae-card__header">
+            <span class="sae-card__code">Projet 1.2</span>
+            <span class="sae-card__sem">S1</span>
+          </div>
+          <h3 class="sae-card__title">S'initier aux réseaux informatiques</h3>
+          <div class="sae-card__acs">
+            <span class="ac-tag">AC11.01</span><span class="ac-tag">AC11.02</span><span class="ac-tag">AC11.03</span><span class="ac-tag">AC11.06</span>
+          </div>
+          <div style="margin-top: 15px; margin-bottom: 20px;">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Configuration de base d'un réseau local et installation de postes clients.</p>
+          </div>
+          <a href="sae12.html" class="btn btn--ghost" style="width: 100%; justify-content: center;">Voir le projet complet →</a>
+        </article>
+
+        <article class="sae-card" data-sem="s1">
+          <div class="sae-card__header">
+            <span class="sae-card__code">Projet 1.3</span>
+            <span class="sae-card__sem">S1</span>
+          </div>
+          <h3 class="sae-card__title">Découverte des dispositifs de transmission</h3>
+          <div class="sae-card__acs">
+            <span class="ac-tag">AC12.01</span><span class="ac-tag">AC12.03</span><span class="ac-tag">AC12.05</span>
+          </div>
+          <div style="margin-top: 15px; margin-bottom: 20px;">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Mesure et analyse de signaux pour comprendre les principes de la transmission de données.</p>
+          </div>
+          <a href="sae13.html" class="btn btn--ghost" style="width: 100%; justify-content: center;">Voir le projet complet →</a>
+        </article>
+
+        <article class="sae-card" data-sem="s1">
+          <div class="sae-card__header">
+            <span class="sae-card__code">Projet 1.4</span>
+            <span class="sae-card__sem">S1</span>
+          </div>
+          <h3 class="sae-card__title">Se présenter sur Internet</h3>
+          <div class="sae-card__acs">
+            <span class="ac-tag">AC13.01</span><span class="ac-tag">AC13.04</span>
+          </div>
+          <div style="margin-top: 15px; margin-bottom: 20px;">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Apprentissage de l'architecture d'un site Web et utilisation des outils de développement.</p>
+          </div>
+          <a href="sae14.html" class="btn btn--ghost" style="width: 100%; justify-content: center;">Voir le projet complet →</a>
+        </article>
+
+        <article class="sae-card" data-sem="s1">
+          <div class="sae-card__header">
+            <span class="sae-card__code">Projet 1.5</span>
+            <span class="sae-card__sem">S1</span>
+          </div>
+          <h3 class="sae-card__title">Traitement des données</h3>
+          <div class="sae-card__acs">
+            <span class="ac-tag">AC13.02</span><span class="ac-tag">AC13.03</span><span class="ac-tag">AC13.05</span>
+          </div>
+          <div style="margin-top: 15px; margin-bottom: 20px;">
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Lire, exécuter et modifier un programme pour traiter des ensembles de données.</p>
+          </div>
+          <a href="sae15.html" class="btn btn--ghost" style="width: 100%; justify-content: center;">Voir le projet complet →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__left">
+        <div class="footer__logo">Portfolio R&T</div>
+      </div>
+      <div class="footer__right">
+        <p class="footer__copy">© 2026 — Thomas Le Flêche</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
