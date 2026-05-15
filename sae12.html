@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
+    /* ════ Justification globale de tous les textes ════ */
+    p, .section__intro {
+      text-align: justify;
+      line-height: 1.6;
+    }
+
     .screenshot-box {
       margin: 20px 0;
       background: #fdfdfd;
@@ -76,7 +82,7 @@
 
           <div class="screenshot-box" style="margin-top: 25px;">
             <img src="ciscopacket.png" alt="Schéma logique du réseau">
-            <p style="font-size: 0.8rem; color: var(--text-dim); font-style: italic; margin-top: 10px;">Topologie réseau : Cœur de réseau multicouche, distribution et routeur de bordure.</p>
+            <p style="font-size: 0.8rem; color: var(--text-dim); font-style: italic; margin-top: 10px; text-align: center;">Topologie réseau : Cœur de réseau multicouche, distribution et routeur de bordure.</p>
           </div>
 
           <h3 style="margin-top: 40px;">Difficultés rencontrées & Solutions</h3>
@@ -147,7 +153,7 @@
 
         <div class="pres__card">
           <h3>Traces & Configurations</h3>
-          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px;">Fichiers de configuration complets :</p>
+          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px; text-align: left;">Fichiers de configuration complets :</p>
           <a href="schema_logique_2.vsdx" class="trace-placeholder" style="text-decoration: none;" download>📊 Schéma Visio (.vsdx)</a>
           <a href="switch multilayer.txt" class="trace-placeholder" style="text-decoration: none;" download>📄 Config Switch Cœur de réseau</a>
           <a href="switch.txt" class="trace-placeholder" style="text-decoration: none;" download>📄 Config Switch d'accès</a>

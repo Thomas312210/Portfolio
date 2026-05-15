@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
+    /* ════ Justification globale de tous les textes ════ */
+    p, .section__intro {
+      text-align: justify;
+      line-height: 1.6;
+    }
+
     /* Styles spécifiques pour l'affichage des preuves techniques */
     .screenshot-box {
       margin: 20px 0;
@@ -28,6 +34,7 @@
       font-size: 0.8rem;
       color: var(--text-dim);
       font-style: italic;
+      text-align: center;
     }
     .solution-box {
       background: rgba(90, 122, 94, 0.05);
@@ -134,7 +141,7 @@
 
         <div class="pres__card">
           <h3>Traces & Preuves</h3>
-          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px;">Livrables et relevés de laboratoire :</p>
+          <p style="font-size: 0.85rem; color: var(--text-dim); margin-bottom: 10px; text-align: left;">Livrables et relevés de laboratoire :</p>
           <a href="IMG_9846.jpeg" class="trace-placeholder" style="text-decoration: none;" target="_blank">📸 Mes calculs manuscrits (Cuivre)</a>
           <a href="capture_fo.png" class="trace-placeholder" style="text-decoration: none;" target="_blank">📸 Extrait de synthèse (Fibre Optique)</a>
           <a href="CU.md" class="trace-placeholder" style="text-decoration: none;" download>📄 Fiche de révision Cuivre</a>
